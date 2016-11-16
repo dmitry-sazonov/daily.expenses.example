@@ -1,0 +1,50 @@
+.container-fluid.earnings
+
+    .container.state
+        .container-fluid.col-md-3
+            select-period(earnings="categories")
+
+    .container.categories-records
+        table.col-md-12
+            tr
+                td.col-md-6
+                    div(block-loading, loading="categories.loading")
+                    .title
+                        span Категории
+                        .btn.btn-success.btn-custom.pull-right(ng-click="addCategory()", style="margin-left: -100%;")
+                            .glyphicon.glyphicon-plus-sign
+                    .categories
+                        .category(ng-repeat="category in categories.items | orderObjectBy:'money':true",
+                            ng-include="'template-categories'",
+                            ng-init="depth = depth + 1",
+                            ng-click="getRecords(category)")
+
+                    .footer
+                        span Итого
+                        span.pull-right(ng-bind="(categories.allMoney | number:0) + ' р.'")
+
+                td.col-md-6
+                    div(block-loading, loading="records.loading")
+                    .title
+                        span Записи
+                        .btn.btn-success.btn-custom.pull-right(ng-click="addRecords()", style="margin-left: -100%;")
+                            .glyphicon.glyphicon-plus-sign
+                    .records
+                        .record(ng-repeat="record in records")
+                            .col-md-6.name(ng-bind="record.timestamp | date:'dd.MM.yyyy'")
+                            .col-md-6.money(ng-bind="(record.money | number:0) + ' р.'")
+                            .description
+                    //.footer
+                        span Итого
+                        span.pull-right(ng-bind="(debts.give.allMoney | number:0) + ' р.'")
+
+
+script(type="text/ng-template", id="template-categories")
+    .col-md-6.name(ng-bind="category.name")
+    .col-md-6.money(ng-bind="(category.money | number:0) + ' р.'")
+    .subcategories
+        .category(ng-repeat="category in category.childs.items | orderObjectBy:'money':true",
+            ng-include="'template-categories'",
+            ng-init="depth = depth + 1",
+            ng-click="getRecords(category); $event.stopPropagation();",
+            ng-style="{'font-size': (16-depth) + 'px'}")

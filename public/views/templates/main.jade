@@ -1,0 +1,47 @@
+.container-fluid.main
+
+    .container.state
+        .container-fluid.col-md-3
+            select-period(expenses="categories.expenses", earnings="categories.earnings")
+
+        .container-fluid.col-md-3.pull-right
+            p
+                span(ng-bind="'Оборот '")
+                span.pull-right(ng-if="loading", ng-bind="'0 р.'")
+                span.pull-right(ng-if="!loading", ng-bind="((sums.total.earnings - sums.total.expenses) | number:0) + ' р.'")
+
+    .container.earnings-expenses
+        table.col-md-12
+            tr
+                td.col-md-6
+                    div(block-loading, loading="categories.earnings.loading")
+                    .title Доходы
+                    .records
+                        .record(ng-repeat="category in categories.earnings.items | withoutZeroCategories | orderObjectBy:'money':true")
+                            span(ng-bind="category.name")
+                            span.pull-right(ng-bind="(category.money | number:0) + ' р.'")
+                        .record.debt(ng-if="sums.debts.take.money > 0")
+                            span Взял в долг
+                            span.pull-right(ng-bind="(sums.debts.take.money | number:0 ) + ' р.'")
+                        .record.debt(ng-if="sums.debts.give.payment > 0")
+                            span Выплатили по долгам
+                            span.pull-right(ng-bind="(sums.debts.give.payment | number:0) + ' р.'")
+                    .footer
+                            span Итого
+                            span.pull-right(ng-bind="(sums.total.earnings | number:0) + ' р.'")
+                td.col-md-6
+                    div(block-loading, loading="categories.expenses.loading")
+                    .title Расходы
+                    .records
+                        .record(ng-repeat="category in categories.expenses.items | withoutZeroCategories | orderObjectBy:'money':true")
+                            span(ng-bind="category.name")
+                            span.pull-right(ng-bind="(category.money | number:0) + ' р.'")
+                        .record.debt(ng-if="sums.debts.give.money > 0")
+                            span Дал в долг
+                            span.pull-right(ng-bind="(sums.debts.give.money | number:0 ) + ' р.'")
+                        .record.debt(ng-if="sums.debts.take.payment > 0")
+                            span Выплатил по долгам
+                            span.pull-right(ng-bind="(sums.debts.take.payment | number:0) + ' р.'")
+                    .footer
+                        span Итого
+                        span.pull-right(ng-bind="(sums.total.expenses | number:0) + ' р.'")

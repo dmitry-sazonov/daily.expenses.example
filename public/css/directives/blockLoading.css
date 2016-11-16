@@ -1,0 +1,22 @@
+.block-loading {
+    transition: opacity 0.2s linear,
+                width 0s 0s;
+    text-align: center;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+}
+
+.block-loading.stop {
+    transition: opacity 0.2s linear,
+                width 0s 0.2s;
+    opacity: 0;
+    width: 0;
+}

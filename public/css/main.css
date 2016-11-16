@@ -1,0 +1,59 @@
+.main > .state p {
+    margin: 0;
+    font-size: 14pt;
+    font-family: Verdana;
+    line-height: 68px;
+}
+
+.main > .earnings-expenses {
+    margin: 20px auto;
+}
+
+.main > .earnings-expenses > table {
+    border-collapse: separate;
+    border-spacing: 15px 0;
+    min-height: 300px;
+}
+
+.main > .earnings-expenses > table > tbody > tr > td {
+    vertical-align: top;
+    box-shadow: 0px 3px 5px 0 rgba(0,0,0,0.75);
+    background: url(../images/page.jpg);
+    background-size: 100% auto;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.main > .earnings-expenses > table > tbody > tr > td > .info {
+    font-size: 12pt;
+    font-family: Verdana;
+    text-align: center;
+}
+
+.main > .earnings-expenses > table > tbody > tr > td > .title {
+    font-size: 14pt;
+    font-family: Verdana;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.main > .earnings-expenses > table > tbody > tr > td > .records {
+    position: relative;
+    padding: 0;
+    font-size: 12pt;
+}
+
+.main > .earnings-expenses > table > tbody > tr > td > .records > .record.debt {
+    text-decoration: underline;
+}
+
+.main > .earnings-expenses > table > tbody > tr > td > .footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 40px;
+    padding: 0 15px;
+}

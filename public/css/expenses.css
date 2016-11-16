@@ -1,0 +1,141 @@
+.expenses .btn-custom {
+    transition: all 0.15s linear;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 17px;
+    font-family: Verdana;
+    line-height: 34px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.expenses .btn-add {
+    transition: max-width 0.5s ease-in-out 1s;
+    max-width: 34px;
+}
+
+.expenses .btn-add:hover {
+    transition: max-width 0.1s ease-in-out;
+    max-width: 200px;
+}
+
+.expenses .header {
+    font-size: 20pt;
+    font-family: Verdana;
+    margin: 0;
+}
+
+.expenses .categories-records {
+    margin: 20px auto;
+}
+
+.expenses .categories-records > table {
+    border-collapse: separate;
+    border-spacing: 15px 0;
+    min-height: 600px;
+}
+
+.expenses .categories-records > table > tbody > tr > td {
+    position: relative;
+    vertical-align: top;
+    box-shadow: 0px 3px 5px 0 rgba(0,0,0,0.75);
+    background: url(../images/page.jpg);
+    background-size: 500px auto;
+    padding-bottom: 40px;
+    max-height: 1000px;
+}
+
+.expenses .categories-records > table > tbody > tr > td > .title {
+    font-size: 14pt;
+    font-family: Verdana;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.expenses .categories-records .categories {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.expenses .categories-records .categories > .category {
+    margin: 3px -15px;
+    border-radius: 0 !important;
+}
+
+.expenses .categories-records .categories .category {
+    transition: background 0.5s;
+    cursor: pointer;
+    background: rgba(0,0,255,0);
+    border-radius: 1px;
+    padding: 3px 15px;
+}
+
+.expenses .categories-records .categories .category:hover {
+    transition: background 0.25s;
+    background: rgba(0,0,255,0.15);
+}
+
+.expenses .categories-records .categories .category .name {
+    padding: 0;
+}
+
+.expenses .categories-records .categories .category .money {
+    text-align: right;
+    padding: 0;
+}
+
+.expenses .categories-records .categories .category .subcategories {
+    clear: both;
+}
+
+.expenses .categories-records .categories .category .subcategories .category {
+    padding: 0 35px;
+}
+
+.expenses .categories-records .footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 40px;
+    padding: 0 15px;
+}
+
+.expenses .categories-records .records {
+    position: absolute;
+    top: 60px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+.expenses .categories-records .records .record {
+    transition: background 0.5s;
+    margin: 3px 0;
+    padding: 3px 15px;
+    border-radius: 0 !important;
+    cursor: pointer;
+    background: rgba(0,0,255,0);
+    font-size: 15px;
+}
+
+.expenses .categories-records .records .record:hover {
+    transition: background 0.25s;
+    background: rgba(0,0,255,0.15);
+}
+
+.expenses .categories-records .records .record .name {
+    padding: 0;
+}
+
+.expenses .categories-records .records .record .money {
+    text-align: right;
+    padding: 0;
+}
+
+.expenses .categories-records .records .record .description {
+    clear: both;
+}

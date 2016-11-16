@@ -1,0 +1,13 @@
+.graphics .header {
+    font-size: 20pt;
+    font-family: Verdana;
+}
+
+.graphics .categoriesOfExpenses {
+    margin-left: 20px;
+}
+
+.graphics .period > table tr td:first-child {
+    text-align: center;
+    width: 20%;
+}

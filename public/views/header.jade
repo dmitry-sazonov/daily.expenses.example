@@ -1,0 +1,15 @@
+.container.header(ng-controller="DE_headerCtrl")
+    .row
+        .btn.btn-primary.pull-right.btn-header-user(ng-if="user.id", ng-mouseenter="hideUserLinks = false", ng-mouseleave="hideUserLinks = true")
+            span(ng-bind="user.login")
+            .user-links(ng-class="{'hideUserLinks': hideUserLinks}")
+                a(href="/expenses") Расходы
+                a(href="/earnings") Доходы
+                //a(href="/graphics") Графики
+                //a(href="/plans") Планировка
+                a(href="/debts") Долги
+                hr
+                a(ng-click="signOut()") Выйти
+        a.btn.btn-success.pull-right(ng-if="!user.id", href="/login") Войти
+        a.btn.btn-default.pull-right(ng-if="!user.id", href="/") Главная
+        a.btn.btn-default.pull-right(ng-if="user.id", href="/main") Главная

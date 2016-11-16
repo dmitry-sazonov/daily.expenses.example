@@ -1,0 +1,18 @@
+.modal-settingsOfGraphics
+    .modal-header
+        h3.modal-title Создать график
+
+    .modal-body
+        h4 Период
+        label
+            input(type="radio", ng-model="data.period", value="all")
+            span Всё
+        br
+        label
+            input(type="radio", ng-model="data.period", value="month")
+            span Месяц
+
+    .modal-footer
+        img.pull-right(src="/images/loading.gif", style="margin-right: 10px;", ng-show="loading")
+        .btn.btn-success(ng-click="create()", ng-hide="loading") Создать
+        .btn.btn-default(ng-click="close()", ng-hide="loading") Отмена

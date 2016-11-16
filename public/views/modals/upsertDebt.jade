@@ -1,0 +1,104 @@
+.modal-upsertDebt
+    .modal-header(ng-class="tab")
+        .col-md-4.upsert-debt
+            h3.modal-title
+                span(ng-if="debts.type == 'give'") Даю в долг
+                span(ng-if="debts.type == 'take'") Беру в долг
+                .btn.btn-default.pull-right(ng-if="editMode", ng-click="showTab('tabPaymentsDebt')", style="margin-left: -100%;") Платежи
+
+        .col-md-4.payments-debt(ng-if="editMode")
+            h3.modal-title
+                .btn.btn-default.pull-left(ng-click="showTab('tabEditDebt')", style="margin-right: -100%;") Изменить
+                span Платежи
+                .buttons.pull-right(style="margin-left: -100%;")
+                    .btn.btn-default.col-md-12(ng-click="showTab('tabPlusPaymentDebt')", style="margin-top: -5px;")
+                        span(ng-if="debts.type == 'give'") Даю ещё
+                        span(ng-if="debts.type == 'take'") Беру ещё
+                    .btn.btn-success.col-md-12(ng-click="showTab('tabMinusPaymentDebt')", style="margin-bottom: -5px;")
+                        span(ng-if="debts.type == 'give'") Получаю
+                        span(ng-if="debts.type == 'take'") Выплачиваю
+
+        .col-md-4.upsert-payments-debt(ng-if="editMode")
+            h3.modal-title
+                .btn.btn-default.pull-left(ng-click="showTab('tabPaymentsDebt')", style="margin-right: -100%;") Платежи
+                span(ng-if="tab == 'tabPlusPaymentDebt'")
+                    span(ng-if="debts.type == 'give'") Даю в долг
+                    span(ng-if="debts.type == 'take'") Беру в долг
+                span(ng-if="tab == 'tabMinusPaymentDebt'")
+                    span(ng-if="debts.type == 'give'") Получаю
+                    span(ng-if="debts.type == 'take'") Выплачиваю
+
+    .modal-body(ng-class="tab")
+        .col-md-4.upsert-debt
+            table(style="margin: 0 auto 10px;")
+                tr
+                    td.col-md-4
+                        select.form-control(ng-model="newData.selectDay")
+                            option(ng-repeat="day in days", value="{{ day }}", ng-bind="day")
+                    td.col-md-4
+                        select.form-control(ng-model="newData.selectMonth")
+                            option(ng-repeat="month in months", value="{{ $index }}", ng-bind="month")
+                    td.col-md-4
+                        select.form-control(ng-model="newData.selectYear")
+                            option(ng-repeat="year in years", value="{{ year }}", ng-bind="year")
+            .row
+                h4(ng-if="debts.type == 'give'") Должник
+                h4(ng-if="debts.type == 'take'") Кредитор
+                input.form-control(type="text", placeholder="Имя...", ng-model="newData.name")
+            .row
+                h4 Сколько?
+                input.form-control(type="number", placeholder="Сколько...", ng-model="newData.startMoney")
+            .row
+                h4 Комментарий
+                textarea.form-control(placeholder="Комментарий...", ng-model="newData.comment", rows="5", style="resize: none;")
+
+        .col-md-4.payments-debt(ng-if="editMode")
+            .row(ng-if="editDebt.payments.length")
+                h4 Платежи
+                .payments(ng-repeat="payment in editDebt.payments | orderBy:'timestamp'")
+                    .col-md-6(ng-bind="(payment.timestamp | date:'dd.MM.yyyy')")
+                    .col-md-6(ng-bind="(payment.money | number:0) + ' р.'", style="text-align: right;")
+
+        .col-md-4.upsert-payments-debt(ng-if="editMode")
+            table(style="margin: 0 auto 10px;")
+                tr
+                    td.col-md-4
+                        select.form-control(ng-model="upsertPaymentsData.selectDay")
+                            option(ng-repeat="day in days", value="{{ day }}", ng-bind="day")
+                    td.col-md-4
+                        select.form-control(ng-model="upsertPaymentsData.selectMonth")
+                            option(ng-repeat="month in months", value="{{ $index }}", ng-bind="month")
+                    td.col-md-4
+                        select.form-control(ng-model="upsertPaymentsData.selectYear")
+                            option(ng-repeat="year in years", value="{{ year }}", ng-bind="year")
+            .row
+                h4 Сколько?
+                input.form-control(type="number", placeholder="Сколько...", ng-model="upsertPaymentsData.money")
+            .row
+                h4 Комментарий
+                textarea.form-control(ng-model="upsertPaymentsData.comment", rows="5", style="resize: none;", placeholder="Комментарий...")
+
+        hr(style="clear: both; margin: 0; border: none;")
+
+    .modal-footer
+        img.pull-right(src="/images/loading.gif", style="margin-right: 10px;", ng-show="loading")
+
+        .buttons(ng-show="!loading")
+
+            // Add Payment Of Debt
+            .btn.btn-primary(ng-if="editMode && (tab == 'tabPlusPaymentDebt' || tab == 'tabMinusPaymentDebt')",
+                            ng-click="upsertPaymentsData.money > 0 && addPaymentDebt()",
+                            ng-disabled="upsertPaymentsData.money <= 0") ОК
+
+            // Update Debt
+            .btn.btn-success(ng-if="editMode && tab == 'tabEditDebt'",
+                            ng-click="newData.name != '' && newData.startMoney > 0 && updateDebt()",
+                            ng-disabled="newData.name == '' || newData.startMoney <= 0") ОК
+
+            // Add Debt
+            .btn.btn-primary(ng-if="!editMode",
+                            ng-click="newData.name != '' && newData.startMoney > 0 && addDebt()",
+                            ng-disabled="newData.name == '' || newData.startMoney <= 0") ОК
+
+            // Cancel
+            .btn.btn-default(ng-click="close()") Закрыть

@@ -1,0 +1,71 @@
+.debts .btn-custom {
+    transition: all 0.15s linear;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 50%;
+    font-family: Verdana;
+    line-height: 34px;
+    text-align: left;
+    overflow: hidden;
+}
+
+
+.debts > table {
+    border-collapse: separate;
+    border-spacing: 15px 0;
+    min-height: 300px;
+}
+
+.debts > table > tbody > tr > td {
+    vertical-align: top;
+    box-shadow: 0px 3px 5px 0 rgba(0,0,0,0.75);
+    background: url(../images/page.jpg);
+    background-size: 500px auto;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.debts > table > tbody > tr > td > .title {
+    font-size: 14pt;
+    font-family: Verdana;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.debts > table > tbody > tr > td > .records {
+    padding: 0;
+    font-size: 12pt;
+    margin-top: 10px;
+}
+
+.debts > table > tbody > tr > td > .records > .record {
+    /*transition: background-color 0.1s linear;*/
+    /*background-color: rgba(0,0,0,0);*/
+    height: 30px;
+    padding: 4px;
+}
+
+.debts .records > .record:hover {
+    background-color: rgba(0,0,255,0.2);
+    cursor: pointer;
+}
+
+.debts  .records > .record > .name {
+    padding: 0;
+}
+
+.debts .records > .record > .money {
+    text-align: right;
+    padding: 0;
+}
+
+.debts > table > tbody > tr > td > .footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 40px;
+    padding: 0 15px;
+}

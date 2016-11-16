@@ -1,0 +1,12 @@
+.modal-header
+    h3.modal-title {{ editMode ? "Изменить" : "Добавить" }} категорию
+
+.modal-body.add-category-modal
+    input.form-control(type="text", placeholder="Название", ng-model="nameCategory")
+
+.modal-footer
+    img.pull-right(src="/images/loading.gif", style="margin-right: 10px;", ng-show="addingCategory")
+    .btn.btn-danger.pull-left(ng-click="category.childs.length || category.countRecords > 0 || removeCategory()", ng-disabled="category.childs.length || category.countRecords > 0", ng-show="!addingCategory && editMode") Удалить
+    .btn.btn-success(ng-click="nameCategory == '' || updateCategory()", ng-disabled="nameCategory == ''", ng-show="!addingCategory && editMode") Изменить
+    .btn.btn-primary(ng-click="nameCategory == '' || addCategory()", ng-disabled="nameCategory == ''", ng-show="!addingCategory && !editMode") ОК
+    .btn.btn-default(ng-click="close()", ng-show="!addingCategory") Отмена

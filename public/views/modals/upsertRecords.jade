@@ -1,0 +1,44 @@
+.modal-updateRecords
+    .modal-header
+        h3.modal-title
+            span(ng-if="countRecords == 0 && !edit_mode") Добавить запись
+            span(ng-if="countRecords == 1 && edit_mode") Изменить запись
+            span(ng-if="countRecords > 1 && edit_mode") Переместить записи
+
+    .modal-body
+        table(ng-if="countRecords <= 1", style="margin: auto;")
+            tr
+                td.col-md-4
+                    select.form-control(ng-model="newData.selectDay")
+                        option(ng-repeat="day in days", value="{{ day }}") {{ day }}
+                td.col-md-4
+                    select.form-control(ng-model="newData.selectMonth")
+                        option(ng-repeat="(index, month) in months", value="{{ index }}") {{ month }}
+                td.col-md-4
+                    select.form-control(ng-model="newData.selectYear")
+                        option(ng-repeat="year in years", value="{{ year }}") {{ year }}
+        .row
+            h4 Категория
+            .container-fluid.categories(ng-repeat="category in categories", ng-include="'modal-template-categories'")
+        .row(ng-if="countRecords <= 1")
+            h4 Описание
+            input.form-control(ng-model='newData.description', type='text', placeholder='Описание')
+        .row(ng-if="countRecords <= 1")
+            h4 Сумма
+            input.form-control(ng-model='newData.money', required='required', type='number', placeholder='Сумма')
+
+    .modal-footer
+        img.pull-right(src="/images/loading.gif", style="margin-right: 10px;", ng-show="loading")
+        .btn.btn-danger.pull-left(ng-click="false", ng-disabled="false", ng-show="!loading && countRecords == 1 && edit_mode") Удалить
+        .btn.btn-success(ng-click="moveRecords()",  ng-show="!loading && countRecords >  1 &&  edit_mode") Переместить
+        .btn.btn-success(ng-click="updateRecord()", ng-show="!loading && countRecords == 1 &&  edit_mode") Изменить
+        .btn.btn-success(ng-click="newData.money > 0 && addRecord()", ng-show="!loading && countRecords == 0 && !edit_mode", ng-disabled="newData.money <= 0") Добавить
+        .btn.btn-default(ng-click="close()", ng-show="!loading") Закрыть
+
+script(type="text/ng-template", id="modal-template-categories")
+    .container-fluid
+        label.radio-inline
+            input(type="radio", ng-model="newData.categoryId", value="{{ category.id }}")
+            span {{ category.name }}
+        .container-fluid
+            .container-fluid.categories(ng-repeat="category in category.childs", ng-include="'modal-template-categories'")

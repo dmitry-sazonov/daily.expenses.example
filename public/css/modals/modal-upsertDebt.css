@@ -1,0 +1,50 @@
+.modal-upsertDebt {
+    overflow: hidden;
+}
+
+.modal-upsertDebt > .modal-header .modal-title {
+    text-align: center;
+}
+
+.modal-upsertDebt > .modal-header,
+.modal-upsertDebt > .modal-body {
+    transition: margin-left 0.2s ease;
+    width: 300%;
+    padding: 15px 0;
+}
+
+.modal-upsertDebt > .modal-header.tabUpsertDebt,
+.modal-upsertDebt > .modal-body.tabUpsertDebt {
+    margin-left: 0;
+}
+
+.modal-upsertDebt > .modal-header.tabPaymentsDebt,
+.modal-upsertDebt > .modal-body.tabPaymentsDebt {
+    margin-left: -100%;
+}
+
+.modal-upsertDebt > .modal-header.tabPlusPaymentDebt,
+.modal-upsertDebt > .modal-body.tabPlusPaymentDebt {
+    margin-left: -200%;
+}
+
+.modal-upsertDebt > .modal-header.tabMinusPaymentDebt,
+.modal-upsertDebt > .modal-body.tabMinusPaymentDebt {
+    margin-left: -200%;
+}
+
+.modal-upsertDebt .modal-header .payments-debt .buttons .btn {
+    float: right;
+    clear: both;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.modal-upsertDebt .modal-body .payments-debt .payments {
+    min-height: 20px;
+}
+
+.modal-upsertDebt .modal-body .payments-debt .payments:hover {
+    background: rgba(0, 0, 255, 0.2);
+    cursor: default;
+}

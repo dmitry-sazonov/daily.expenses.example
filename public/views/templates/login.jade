@@ -1,0 +1,31 @@
+.container.login
+    .form.col-md-6(ng-show="params.signInFormShow")
+        form(ng-submit="signIn()")
+            h1 Авторизация
+            .row
+                label.col-md-2 Логин
+                input(type="text", ng-model="signInParams.username", required="required")
+            .row
+                label.col-md-2 Пароль
+                input(type="password", ng-model="signInParams.password", required="required")
+            .row
+                input.btn.btn-primary.pull-right(type="submit", value="Войти")
+                a.btn.btn-link(ng-click="showSignUpForm()") Зарегистрироваться
+    .form.col-md-6(ng-show="params.signUpFormShow")
+        form(ng-submit="signUp()")
+            h1 Регистрация
+            .row
+                label.col-md-3 Логин
+                input(type="text", ng-model="signUpParams.username", required="required")
+            .row
+                label.col-md-3 Пароль
+                input(type="password", ng-model="signUpParams.password", required="required")
+            .row
+                label.col-md-3 Повторите пароль
+                input(type="password", ng-model="signUpParams.secondPwd", required="required")
+            .row
+                label.col-md-3 Email
+                input(type="email", ng-model="signUpParams.email", required="required")
+            .row
+                input.btn.btn-success.pull-right(type="submit", value="Зарегистрироваться")
+                a.btn.btn-link(ng-click="showSignInForm()") Авторизоваться

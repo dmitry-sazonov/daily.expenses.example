@@ -1,0 +1,38 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-width: 800px;
+    height: 100%;
+}
+
+body {
+    padding: 5px;
+    /*background: #D6E2F1 !important;*/
+    background: url(../images/texture.jpg);
+    background-size: 100% auto;
+}
+
+.row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@font-face {
+    font-family: '9877';
+    src: url('../fonts/9877.otf');
+}
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 15px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 15px;
+}

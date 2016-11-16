@@ -1,0 +1,30 @@
+doctype
+html(ng-app="DE")
+    head
+        meta(charset="utf-8")
+
+        link(type="text/css", rel="stylesheet", href="/css/index.css")
+        link(type="text/css", rel="stylesheet", href="/css/main.css")
+        link(type="text/css", rel="stylesheet", href="/css/header.css")
+
+        link(type="text/css", rel="stylesheet", href="/css/expenses.css")
+        link(type="text/css", rel="stylesheet", href="/css/earnings.css")
+        link(type="text/css", rel="stylesheet", href="/css/graphics.css")
+        link(type="text/css", rel="stylesheet", href="/css/plans.css")
+        link(type="text/css", rel="stylesheet", href="/css/debts.css")
+
+        link(type="text/css", rel="stylesheet", href="/css/directives/selectPeriod.css")
+        link(type="text/css", rel="stylesheet", href="/css/directives/blockLoading.css")
+
+        link(type="text/css", rel="stylesheet", href="/css/modals/index.css")
+        link(type="text/css", rel="stylesheet", href="/css/modals/modal-upsertDebt.css")
+
+        link(type="text/css", rel="stylesheet", href="/libs/bootstrap/css/bootstrap.min.css")
+        link(type="text/css", rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css")
+
+        title Ежедневные расходы
+
+        include scripts
+    body.scroll
+        include header
+        block body

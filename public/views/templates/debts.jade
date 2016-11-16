@@ -1,0 +1,32 @@
+.container.debts
+
+    table.col-md-12
+        tr
+            td.col-md-6
+                .title
+                    span Взял в долг
+                    .btn.btn-success.btn-custom.pull-right(ng-click="addDebts('take')", style="margin-left: -100%;")
+                        .glyphicon.glyphicon-plus-sign
+                .records
+                    div(block-loading, loading="debts.take.loading")
+                    .record(ng-repeat="debt in debts.take", ng-if="!debt.done", ng-click="editDebt(debt)", ng-attr-title="{{ debt.comment }}")
+                        .col-md-6.name(ng-bind="debt.name")
+                        .col-md-6.money(ng-bind="(debt.money | number:0) + ' р.'")
+
+                .footer
+                    span Итого
+                    span.pull-right(ng-bind="(debts.take.allMoney | number:0) + ' р.'")
+
+            td.col-md-6
+                .title
+                    span Дал в долг
+                    .btn.btn-success.btn-custom.pull-right(ng-click="addDebts('give')", style="margin-left: -100%;")
+                        .glyphicon.glyphicon-plus-sign
+                .records
+                    div(block-loading, loading="debts.give.loading")
+                    .record(ng-repeat="debt in debts.give", ng-if="!debt.done", ng-click="editDebt(debt)", ng-attr-title="{{ debt.comment }}")
+                        .col-md-6.name(ng-bind="debt.name")
+                        .col-md-6.money(ng-bind="(debt.money | number:0) + ' р.'")
+                .footer
+                    span Итого
+                    span.pull-right(ng-bind="(debts.give.allMoney | number:0) + ' р.'")

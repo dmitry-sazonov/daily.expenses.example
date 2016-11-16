@@ -1,0 +1,14 @@
+.container-fluid.plans
+
+    .values(style="position: relative;")
+        div(block-loading, loading="categories.expenses.loading")
+        table
+            tr
+                td
+                td(ng-repeat="month in calendar.months", ng-bind="month")
+
+            tr(ng-repeat="category in categories.expenses.all")
+                td(ng-bind="category.name")
+                td(ng-repeat="(number, month) in calendar.months")
+                    input.form-control(type="number", ng-model="plans[category.id][number]")
+                    .glyphicon.glyphicon-ok(ng-click="savePlanCategory(category, number)")

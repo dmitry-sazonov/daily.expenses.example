@@ -1,0 +1,40 @@
+.container-fluid.graphics
+
+    .container-fluid.col-md-3(ng-hide="loading")
+        p.header График
+
+        .settings
+            p.header Категории
+            .categoriesOfExpenses
+                label
+                    input(type="radio", ng-model="graphicsSettings.category", value="all")
+                    span Все
+            .categoriesOfExpenses(ng-repeat="category in categoriesOfExpenses", ng-include="'template-graphics'")
+
+            p.header Период
+            .period
+                table
+                    tr
+                        td
+                            input(type="radio", ng-model="graphicsSettings.period", value="oneMonth")
+                        td
+                            select.form-control(ng-model="graphicsSettings.oneMonth")
+                                option(ng-repeat="month in calendar.months", value="{{ $index }}") {{ month }}
+                    tr
+                        td
+                            input(type="radio", ng-model="graphicsSettings.period", value="severalWeeks")
+                        td
+                            select.form-control(ng-model="graphicsSettings.severalWeeks")
+                                option(ng-repeat="number in [2,3,4]", value="{{ number }}") {{ number }} недели
+                                option(ng-repeat="number in [5,6,7,8,9,10]", value="{{ number }}") {{ number }} недель
+
+        .btn.btn-success(ng-click="getGraphics()") График
+
+    #chart.container-fluid.col-md-8.pull-right
+        canvas
+
+script(type="text/ng-template", id="template-graphics")
+    label
+        input(type="radio", ng-model="graphicsSettings.category", value="{{ category.id }}")
+        span {{ category.name }}
+    .categoriesOfExpenses(ng-repeat="category in category.childs", ng-include="'template-graphics'")

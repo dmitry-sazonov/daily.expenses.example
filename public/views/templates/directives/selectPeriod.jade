@@ -1,0 +1,9 @@
+.select-period
+    select.form-control(ng-model="season", ng-disabled="expenses.loading || earnings.loading")
+        option(value="all") За всё время
+        option(value="week") Неделя
+        option(value="month") Месяц
+
+    select.form-control(ng-model="subseason", ng-disabled="season == 'all' || expenses.loading || earnings.loading")
+        option(ng-if="season == 'week'", ng-repeat="week in calendar.weeks", value='{{ $index }}', ng-class="{current: $index == calendar.current.week}") {{ week.name }}
+        option(ng-if="season == 'month'", ng-repeat="month in calendar.months", value='{{ $index }}', ng-class="{current: $index == calendar.current.month}") {{ month }}
